@@ -26,9 +26,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 </ul>
-                <form class="d-flex">
+                {{-- <form class="d-flex">
                     <a href="{{ url('/login') }}" class="btn btn-outline-light">Login</a>
-                </form>
+                </form> --}}
             </div>
         </div>
     </nav>
@@ -40,7 +40,7 @@
             <div class="row mt-5">
                 <h1>Destinasi Wisata</h1>
             </div>
-            <div class="row d-flex justify-content-center align-items-center p-2">
+            <div class="row d-flex justify-content-start align-items-center p-2">
                 @foreach ($wisata as $data)
                     <div class="col-sm-6 col-md-4 col-lg-3 p-3">
                         <div class="card" style="width: 100%;">
@@ -48,7 +48,7 @@
                                 alt="{{ $data->nama_wisata }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $data->nama_wisata }}</h5>
-                                <p class="card-text">{{ $data->deskripsi }}</p>
+                                <p class="card-text">{{ $data->lokasi->nama_lokasi }}</p>
                                 <button class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#detailModal{{ $data->id }}">Lihat Detail</button>
                             </div>
@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
+                                    <button type="button" class="btn btn-outline-danger"
                                         data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>

@@ -44,6 +44,15 @@ class WisataController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nama_wisata' => 'required|unique:wisatas,nama_wisata',
+            'id_kategori' => 'required',
+            'id_lokasi' => 'required',
+            'deskripsi' => 'required',
+            'cover' => 'required',
+            'id_event' => 'required'
+        ]);
+
         $wisata = new Wisata;
         $wisata->nama_wisata = $request->nama_wisata;
         $wisata->id_kategori = $request->id_kategori;
@@ -101,6 +110,15 @@ class WisataController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nama_wisata' => 'required|unique:wisatas,nama_wisata',
+            'id_kategori' => 'required',
+            'id_lokasi' => 'required',
+            'deskripsi' => 'required',
+            'cover' => 'required',
+            'id_event' => 'required',
+        ]);
+
         $wisata = Wisata::findOrFail($id);
         $wisata->nama_wisata = $request->nama_wisata;
         $wisata->id_kategori = $request->id_kategori;
@@ -115,7 +133,7 @@ class WisataController extends Controller
             $name = rand(1000, 9999) . $img->getClientOriginalName();
             $img->move('images/wisata', $name);
             $wisata->cover = $name;
-            
+
         }
         $wisata->save();
 

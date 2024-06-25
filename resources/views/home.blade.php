@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
 
-            <div class="card-header fs-2">{{ __('Dashboard') }}</div>
+            <div style="color:red" class="card-header fs-2 ">{{ __('Dashboard') }}</div>
 
             <div class="card-body">
                 @if (session('status'))

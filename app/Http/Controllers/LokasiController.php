@@ -42,6 +42,12 @@ class LokasiController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nama_lokasi' => 'required',
+            'provinsi' => 'required',
+            'kabupaten' => 'required'
+        ]);
+
         $lokasi = new Lokasi;
         $lokasi->nama_lokasi = $request->nama_lokasi;
         $lokasi->provinsi = $request->provinsi;
@@ -85,6 +91,12 @@ class LokasiController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nama_lokasi' => 'required',
+            'provinsi' => 'required',
+            'kabupaten' => 'required'
+        ]);
+
         $lokasi = Lokasi::findOrFail($id);
         $lokasi->nama_lokasi = $request->nama_lokasi;
         $lokasi->provinsi = $request->provinsi;

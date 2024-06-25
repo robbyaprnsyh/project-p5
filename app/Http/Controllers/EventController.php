@@ -44,6 +44,12 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'tema_event' => 'required',
+            'tgl_diselenggarakan' => 'required',
+            'id_lokasi' => 'required'
+        ]);
+
         $event = new Event();
         $event->tema_event = $request->tema_event;
         $event->tgl_diselenggarakan = $request->tgl_diselenggarakan;
@@ -88,6 +94,12 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'tema_event' => 'required',
+            'tgl_diselenggarakan' => 'required',
+            'id_lokasi' => 'required'
+        ]);
+
         $event = Event::findOrFail($id);
         $event->tema_event = $request->tema_event;
         $event->tgl_diselenggarakan = $request->tgl_diselenggarakan;
